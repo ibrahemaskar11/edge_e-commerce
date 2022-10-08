@@ -53,6 +53,8 @@ const ItemPage = () => {
   };
   const addToWishList = async () => {
     dispatch(wishListActions.setIsLoading({ isLoading: true }));
+    history("/user/wish-list");
+
     try {
       const userId = localStorage.getItem("userId");
       const doesItemExist = wishListItems.findIndex(
@@ -80,7 +82,6 @@ const ItemPage = () => {
       dispatch(wishListActions.setChanged({ changed: true }));
       dispatch(wishListActions.setWishListItems(data.user.wishList));
       dispatch(wishListActions.setIsLoading({ isLoading: false }));
-      history("/user/wish-list");
     } catch (error) {
       console.log(error);
       dispatch(wishListActions.setIsLoading({ isLoading: false }));
@@ -90,7 +91,6 @@ const ItemPage = () => {
   };
   const removeFromWishList = () => {
     dispatch(wishListActions.removeItemFromWishList({ _id: item._id }));
-
   };
   const loadingPanner = (
     <div className="h-[100vh] flex justify-center items-center w-full">

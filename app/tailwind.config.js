@@ -11,6 +11,12 @@ module.exports = {
         mostlyblack: "#222",
         blackish: "#343a40",
       },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1280px",
+        xl: "1530px",
+      },
     },
   },
   plugins: [],

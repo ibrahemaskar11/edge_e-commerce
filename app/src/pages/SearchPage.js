@@ -85,7 +85,7 @@ const SearchPage = () => {
           />
         </div>
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mx-auto py-12 justify-center items-center lg:px-[10rem] text-center`}
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto py-12 justify-center items-center xl:px-[10rem] text-center`}
         >
           {touched &&
             !isNoSearchItems && !searchInputEmpty &&

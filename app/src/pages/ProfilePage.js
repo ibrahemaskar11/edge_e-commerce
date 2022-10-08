@@ -118,7 +118,13 @@ const ProfilePage = () => {
       {loading && !error && loadingPanner}
       {!loading && !error && (
         <section className="py-[80px]">
-          <img src={profileImg} className="hidden lg:block w-full" alt="" />
+          <img
+            src={
+              "https://res.cloudinary.com/dvywdmp9y/image/upload/v1665195016/accountImg_ziizym.jpg"
+            }
+            className="hidden lg:block w-full"
+            alt=""
+          />
           <div className="py-12 max-w-[960px] mx-auto">
             <h1 className="text-4xl font-[500] text-center tracking-[0.3rem] abel mb-12">
               Personal Details

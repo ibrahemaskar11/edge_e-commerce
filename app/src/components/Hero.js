@@ -1,5 +1,4 @@
 import React from "react";
-import heroImg from "../assets/hero_img_mob.jpg";
 import { AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const Hero = ({ refProp }) => {
@@ -12,7 +11,9 @@ const Hero = ({ refProp }) => {
     >
       <div className="absolute h-[100vh] w-full  ">
         <img
-          src={heroImg}
+          src={
+            "https://res.cloudinary.com/dvywdmp9y/image/upload/v1665195021/hero_img_mob_z5zdvr.jpg"
+          }
           alt=""
           className="h-full w-full overflow-hidden object-cover mix-blend-overlay "
         />

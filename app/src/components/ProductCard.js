@@ -41,7 +41,7 @@ const ProductCard = ({ item, pageSrc, imgClassName }) => {
       }}
     >
       <div
-        className={`w-[22.5rem] h-[33.875rem] lg:w-[23.5rem]  lg:h-[34.875rem] object-cover overflow-hidden  rounded my-4 mx-2 relative ${imgClassName} cursor-pointer`}
+        className={`w-[22.5rem] h-[33.875rem] xl:w-[23.5rem]  xl:h-[34.875rem] object-cover overflow-hidden  rounded my-4 mx-2 relative ${imgClassName} cursor-pointer`}
       >
         <LazyLoadImage
           onClick={() => {
