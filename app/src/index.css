@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Barlow&family=Poppins&display=swap");
+.slider {
+  --items-per-screen: 4;
+  --slider-index: 0;
+  display: flex;
+  flex-grow: 1;
+
+  transform: translateX(calc(var(--slider-index) * -75%));
+  transition: transform 250ms ease-in-out;
+}
+.btn-hover {
+  transition: background-color 0.5s ease;
+}
+.superior {
+  font-family: "Poiret One", cursive;
+  font-weight: 700;
+}
+.barlow {
+  font-family: "Barlow", sans-serif;
+}
+.abel {
+  font-family: "Abel", sans-serif;
+}
+.hover-zoom img {
+  transition: transform 0.5s ease;
+}
+.hover-zoom img:hover {
+  transform: scale(1.25);
+}
+.circle {
+  top: 13px;
+  left: 8px;
+}
+.selection-text {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  transition: all 0.3s ease;
+}
+.select-size-menu{
+    transition: all 0.3s ease;
+
+}
+.filter-item {
+  transition: all 0.3s ease-out;
+}
+.product-card-choices {
+  top: 98%;
+  transform: translate(0, -98%);
+  width: 100%;
+}
+.select {
+  transition: background-color 0.1s ease;
+}
+.select-size {
+  transition: all 0.3s ease-out;
+}
+.img-select {
+  transition: all 0.3s ease-out;
+}
+.add-btn {
+  transition: background-color 0.3s ease;
+}
+.img-element img {
+  width: 23.5rem;
+  height: 34.875rem;
+  mix-blend-mode: overlay;
+}
+.img-element-page img {
+  width: 30rem;
+  height: 45.5rem;
+}
+.img-element-page-sm img{
+  width: 100vw;
+  height: 34.875rem;
+}
+.img-element-page-md img{
+  width: 100vw;
+  height: 55.5rem;
+}
+.fade-enter {
+  opacity: 0;
+  filter: blur(15px);
+}
+
+.fade-enter-active {
+  opacity: 0.5;
+  filter: blur(0);
+
+  transition: opacity 300ms;
+}
+
+.fade-enter-done {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 5000ms linear;
+}
+.fade-exit-active {
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+
+.fade-exit-done {
+  opacity: 0;
+}
+.lazy-load-image-background.blur-new-arrivals {
+  filter: blur(15px);
+}
+.lazy-load-image-background:hover {
+  transform: scale(1.25);
+}
+.lazy-load-image-background.blur-new-arrivals.lazy-load-image-loaded {
+  filter: blur(0);
+  transition: all 0.7s ease;
+}
+
+.lazy-load-image-background.blur-new-arrivals > img {
+  opacity: 0;
+}
+
+.lazy-load-image-background.blur-new-arrivals.lazy-load-image-loaded > img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.lazy-load-image-background.blur {
+  filter: blur(15px);
+}
+
+.lazy-load-image-background.blur.lazy-load-image-loaded {
+  filter: blur(0);
+  transition: all 0.3s ease;
+}
+
+.lazy-load-image-background.blur > img {
+  opacity: 0;
+}
+
+.lazy-load-image-background.blur.lazy-load-image-loaded > img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.left-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 32px;
+  z-index: 1;
+  cursor: pointer;
+}
+.right-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 32px;
+  z-index: 1;
+  cursor: pointer;
+}
+.left-side-arrow-hero {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.right-side-arrow-hero {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 5px;
+  z-index: 1;
+  cursor: pointer;
+}
+.right-side-arrow-hero-medium {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+.left-side-arrow-hero-medium {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.fade-exit {
+  opacity: 0.5;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.points-hero {
+  position: absolute;
+  top: 92%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 20px;
+  left: 50%;
+  transform: translate(-50%, -92%);
+}
+.points {
+  position: absolute;
+  top: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 20px;
+  left: 50%;
+  transform: translate(-50%, -92%);
+}
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 5px;
+  background: transparent;
+}
+
+/* Track */
+.hide-scrollbar::-webkit-scrollbar-track {
+  display: none;
+
+  background: transparent;
+}
+
+/* Handle */
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  display: none;
+
+  background: #888;
+}
+
+/* Handle on hover */
+.hide-scrollbar::-webkit-scrollbar-thumb:hover {
+  display: none;
+
+  background: #555;
+}
