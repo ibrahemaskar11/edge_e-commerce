@@ -1,6 +1,6 @@
 # Getting Started with backend 
 
-##Technologies used:
+## Technologies used:
 ### 1.Mongodb
 ### 2.Node.js
 ### 3.Express
