@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AuthContext from "../store/auth/AuthContext";
 import CircularLoading from "../UI/CircularLoading";
-import profileImg from "../assets/accountImg.jpg";
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
