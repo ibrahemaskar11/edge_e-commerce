@@ -1,10 +1,10 @@
 # Getting Started with backend 
 
 ## Technologies used:
-#### 1.Mongodb
-#### 2.Node.js
-#### 3.Express
-#### 4.json web tokens for authentication
+1.Mongodb
+2.Node.js
+3.Express
+4.json web tokens for authentication
 
 ## Installation
 
