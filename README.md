@@ -8,7 +8,7 @@ Edge is a MERN stack e-commerce website
 
 - Node.js/Express for back-end development 
 
-- json web tokens for authentication 
+- JSON web tokens for authentication 
 
 - React for building the front-end 
 
