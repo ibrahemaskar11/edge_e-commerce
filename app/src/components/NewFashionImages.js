@@ -24,7 +24,6 @@ const NewFashionImages = ({ images, duration, pageSrc }) => {
       setStart(newStart);
       setEnd(newEnd);
     }
-    console.log(start, end);
   }
   function gobackwardHandler() {
     const isStart = start === 0;
@@ -38,7 +37,6 @@ const NewFashionImages = ({ images, duration, pageSrc }) => {
       setStart(newStart);
       setEnd(newEnd);
     }
-    console.log(start, end);
   }
   const showImages = images.slice(start, end);
   

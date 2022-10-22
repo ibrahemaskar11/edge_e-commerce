@@ -46,7 +46,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   className=""
@@ -64,7 +64,7 @@ const NewArrivals = (props) => {
                     }
                     placeholder={<HeroLazyImagePlaceholder />}
                     delayTime={300}
-                    threshold={0.5}
+                    threshold={0.5}   
                     delayMethod="debounce"
                     alt=""
                     className=""
@@ -82,7 +82,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   effect="blur"
@@ -98,7 +98,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   effect="blur"
@@ -156,7 +156,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   effect="blur"
@@ -173,7 +173,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   className=""
@@ -190,7 +190,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   className=""
@@ -208,7 +208,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   effect="blur"
@@ -224,7 +224,7 @@ const NewArrivals = (props) => {
                   }
                   placeholder={<HeroLazyImagePlaceholder />}
                   delayTime={300}
-                  threshold={0.5}
+                  threshold={0.5}   
                   delayMethod="debounce"
                   alt=""
                   effect="blur"

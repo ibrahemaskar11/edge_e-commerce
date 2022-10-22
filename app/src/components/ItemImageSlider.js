@@ -117,7 +117,6 @@ const ItemImageSlider = ({
       dispatch(wishListActions.setIsLoading({ isLoading: false }));
       history("/user/wish-list");
     } catch (error) {
-      console.log(error);
       dispatch(wishListActions.setIsLoading({ isLoading: false }));
       setError(true);
       setErrorMessage("Something Went Wrong");
@@ -126,7 +125,6 @@ const ItemImageSlider = ({
   const removeFromWishList = () => {
     dispatch(wishListActions.removeItemFromWishList({ _id: item._id }));
 
-    console.log(wishListItems);
   };
   const loadingPanner = (
     <div className="h-[100vh] flex justify-center items-center w-full">

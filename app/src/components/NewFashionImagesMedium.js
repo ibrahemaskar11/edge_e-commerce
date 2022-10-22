@@ -29,7 +29,6 @@ const NewFashionImagesMedium = ({ images, duration, pageSrc }) => {
       setStart(newStart);
       setEnd(newEnd);
     }
-    console.log(start, end);
   }
   function gobackwardHandler() {
     const isStart = start === 0;
@@ -43,7 +42,6 @@ const NewFashionImagesMedium = ({ images, duration, pageSrc }) => {
       setStart(newStart);
       setEnd(newEnd);
     }
-    console.log(start, end);
   }
   const firstImages = images.slice(start, end);
   
