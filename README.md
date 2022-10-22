@@ -1,6 +1,6 @@
 # Edge e-commerce
 
-Edge is a MERN stack e-commerce website that manages data using Mongodb and Mongoose while maintaining a well built UI using React
+Edge is a MERN stack e-commerce website 
 
 ## Technologies used:
 
