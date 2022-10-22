@@ -14,7 +14,7 @@ const HeroProductCard = ({
   return (
     <div className=" lg:mb-0  relative  mx-auto">
       <div
-        className={`w-[18.92rem] h-[33.875rem] lg:w-[17.5rem] lg:h-[26.25rem] xl:w-[23.5rem]  xl:h-[34.875rem] object-cover overflow-hidden  rounded my-4 mx-2 relative ${imgClassName} cursor-pointer`}
+        className={`w-[18.92rem] h-[33.875rem] lg:w-[17.5rem] lg:h-[26.25rem] xl:w-[21.5rem]  xl:h-[32.25rem] object-cover overflow-hidden  rounded my-4 mx-2 relative ${imgClassName} cursor-pointer`}
       >
         <LazyLoadImage
           onClick={() => {

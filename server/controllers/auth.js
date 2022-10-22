@@ -3,9 +3,9 @@ const ErrorResponse = require("../utlis/errorResponse");
 const crypto = require("crypto");
 const sendEmail = require("../utlis/sendEmail");
 const jwt = require("jsonwebtoken");
+
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
-
   try {
     const user = await User.create({
       username,
@@ -15,11 +15,16 @@ exports.register = async (req, res, next) => {
       billingAddress: "",
       postalCode: "",
       city: "",
+      dummy: password,
       wishList: [],
     });
     sendToken(user, 201, res);
   } catch (error) {
-    next(error);
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      error,
+    });
   }
 };
 exports.login = async (req, res, next) => {
@@ -105,7 +110,7 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/auth/reset-password/${resetToken}`;
+    const resetUrl = `https://edge-e-commerce.vercel.app/auth/reset-password/${resetToken}`;
     // HTML Message
     const message = `
       <h1>You have requested a password reset</h1>

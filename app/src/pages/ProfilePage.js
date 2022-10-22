@@ -7,8 +7,15 @@ import CircularLoading from "../UI/CircularLoading";
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [change, setChange] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [postalCodeError, setPostalCodeError] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -16,31 +23,50 @@ const ProfilePage = () => {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const history = useNavigate();
-  const { login,isLoggedIn } = useContext(AuthContext)
-  const usernameChangeHandler = (e) => {
-    setUsername(e.target.value);
-  };
-  const emailChangeHandler = (e) => {
-    setEmail(e.target.value);
-  };
-  const phoneNumberChangeHandler = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-  const addressChangeHandler = (e) => {
-    setAddress(e.target.value);
-  };
-  const cityChangeHandler = (e) => {
-    setCity(e.target.value);
-  };
-  const postalCodeChangeHandler = (e) => {
-    setPostalCode(e.target.value);
-  };
+  const { login, isLoggedIn } = useContext(AuthContext);
+   const usernameChangeHandler = (e) => {
+     setUsernameError(false);
+     setErrorMessage("");
 
-  useEffect(()=>{
-    if(!isLoggedIn){
-      history('/auth/login')
+     setUsername(e.target.value);
+   };
+   const emailChangeHandler = (e) => {
+     setEmailError(false);
+     setErrorMessage("");
+
+     setEmail(e.target.value);
+   };
+   const phoneNumberChangeHandler = (e) => {
+     setPhoneNumberError(false);
+     setErrorMessage("");
+
+     setPhoneNumber(e.target.value);
+   };
+   const addressChangeHandler = (e) => {
+     setAddressError(false);
+     setErrorMessage("");
+
+     setAddress(e.target.value);
+   };
+   const cityChangeHandler = (e) => {
+     setCityError(false);
+     setErrorMessage("");
+
+     setCity(e.target.value);
+   };
+   const postalCodeChangeHandler = (e) => {
+     setPostalCodeError(false);
+     setErrorMessage("");
+
+     setPostalCode(e.target.value);
+   };
+
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history("/auth/login");
     }
-  },[isLoggedIn])
+  }, [isLoggedIn]);
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
@@ -69,6 +95,42 @@ const ProfilePage = () => {
     const authToken = localStorage.getItem("authToken");
     setLoading(true);
     try {
+      let redFlag = false
+      if (username.trim().length === 0) {
+        setUsernameError(true);
+        redFlag = true
+      }
+      if (phoneNumber.trim().length === 0) {
+        setPhoneNumberError(true);
+        redFlag = true
+      }
+      if (phoneNumber.trim().length !== 11) {
+        setPhoneNumberError(true);
+        redFlag = true
+      }
+      if (email.trim().length === 0) {
+        setEmailError(true);
+        redFlag = true
+      }
+      if (!email.includes("@")) {
+        setEmailError(true);
+        redFlag = true
+      }
+      if (address.trim().length === 0) {
+        setAddressError(true);
+        redFlag = true
+      }
+      if (city.trim().length === 0) {
+        setCityError(true);
+        redFlag = true
+      }
+      if (postalCode.trim().length === 0) {
+        setPostalCodeError(true);
+        redFlag = true
+      }
+      if(redFlag){
+        throw new error('invalid input')
+      }
       const res = await fetch(
         "https://edgee-commercebackend-production.up.railway.app/api/auth/user/reset",
         {
@@ -94,7 +156,10 @@ const ProfilePage = () => {
       login(data.token, data.user, expirationTime);
       history(0);
     } catch (error) {
-      setError(true);
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
+      setErrorMessage('invalid input');
       setLoading(false);
     }
   };
@@ -113,9 +178,8 @@ const ProfilePage = () => {
   return (
     <>
       <Navbar changeColor={true} isShadow={false} />
-      {error && errorPanner}
-      {loading && !error && loadingPanner}
-      {!loading && !error && (
+      {loading && loadingPanner}
+      {!loading && (
         <section className="py-[80px]">
           <img
             src={
@@ -128,6 +192,11 @@ const ProfilePage = () => {
             <h1 className="text-4xl font-[500] text-center tracking-[0.3rem] abel mb-12">
               Personal Details
             </h1>
+            {errorMessage && (
+              <h3 className="capitalize text-center abel text-xl font-[600] mb-12 text-red-600">
+                Invalid input
+              </h3>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 ">
               <div className="mx-8">
                 <label
@@ -138,14 +207,11 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4  ${usernameError && "bg-red-400"}`}
                   name="fullname"
                   value={username}
                   onChange={usernameChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
               <div className="mx-8">
@@ -157,14 +223,13 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="email"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={` ${
+                    emailError && "bg-red-400"
+                  } block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 `}
                   name="email"
                   value={email}
                   onChange={emailChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
               <div className="mx-8 mt-12">
@@ -176,14 +241,13 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={`${
+                    phoneNumberError && "bg-red-400"
+                  } block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 `}
                   name="phoneNumber"
                   value={phoneNumber}
                   onChange={phoneNumberChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
               <div className="mx-8 mt-12">
@@ -195,14 +259,13 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={`${
+                    addressError && "bg-red-400"
+                  } block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 `}
                   name="address"
                   value={address}
                   onChange={addressChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
               <div className="mx-8 mt-12">
@@ -214,14 +277,13 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={`${
+                    cityError && "bg-red-400"
+                  } block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 `}
                   name="address"
                   value={city}
                   onChange={cityChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
               <div className="mx-8 mt-12">
@@ -233,14 +295,13 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  className={`block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 ${
-                    !change ? " cursor-default" : ""
-                  }`}
+                  className={`${
+                    postalCodeError && "bg-red-400"
+                  } block  border-b-2 placeholder:text-black abel text-xl bg-transparent border-blackish w-full outline-none py-2 px-3 mb-4 `}
                   name="postal code"
                   value={postalCode}
                   onChange={postalCodeChangeHandler}
                   required
-                  disabled={!change}
                 />
               </div>
             </div>
@@ -259,34 +320,13 @@ const ProfilePage = () => {
               </Link>
             </div>
             <div className="mx-auto flex justify-center items-center">
-              {!change && (
                 <button
-                  onClick={() => {
-                    setChange(true);
-                  }}
+                  onClick={onSubmitHandler}
                   className={` px-9 my-8 text-center capitalize py-3  hover:bg-mostlyblack bg-black text-white text-xl hover:bg-green-dark focus:outline-none mb-4 abel`}
                 >
                   Edit personal details
                 </button>
-              )}
-              {change && (
-                <div className="flex flex-col">
-                  <button
-                    onClick={onSubmitHandler}
-                    className={` px-24 my-8 text-center capitalize py-3  hover:bg-mostlyblack bg-black text-white text-xl hover:bg-green-dark focus:outline-none mb-4 abel`}
-                  >
-                    Submit
-                  </button>
-                  <a
-                    onClick={() => {
-                      setChange(false);
-                    }}
-                    className="px-4 cursor-pointer text-center abel hover:text-black/60 "
-                  >
-                    Cancel
-                  </a>
-                </div>
-              )}
+          
             </div>
           </div>
         </section>

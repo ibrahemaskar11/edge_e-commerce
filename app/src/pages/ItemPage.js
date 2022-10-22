@@ -33,7 +33,6 @@ const ItemPage = () => {
   const item = items.find((item) => item._id === itemId);
   const dispatch = useDispatch();
   const history = useNavigate();
-
   const addToCartHandler = () => {
     if (!size) {
       setSelectError(true);
@@ -155,8 +154,13 @@ const ItemPage = () => {
 
                 <h1 className="text-3xl mb-4 ">&euro; {item?.price}</h1>
                 <div>
+                  {selectError && (
+                    <h3 className="font-bold mb-2 text-red-600">
+                      You have to choose size first
+                    </h3>
+                  )}
                   <h3 className="font-bold mb-2 ">Size</h3>
-                  <ul className="flex flex-row space-x-8 text-center mb-8">
+                  <ul className="flex flex-row  text-center mb-8">
                     <li
                       onClick={() => {
                         setSize("XS");
@@ -166,9 +170,9 @@ const ItemPage = () => {
                         size === "XS"
                           ? "text-green-500 hover:text-green-600 border-green-500"
                           : "hover:border-mostlyblack border-white"
-                      } border-b-[1px]   select-size cursor-pointer w-4 py-1`}
+                      } border-[1px] rounded-full   mx-2 w-11 text-center select-size cursor-pointer  py-1`}
                     >
-                      <button>XS</button>
+                      <button className="px-3 py-1 rounded-full text-center">XS</button>
                     </li>
                     <li
                       onClick={() => {
@@ -179,9 +183,9 @@ const ItemPage = () => {
                         size === "S"
                           ? "text-green-500 hover:text-green-600 border-green-500"
                           : "hover:border-mostlyblack border-white"
-                      } border-b-[1px]   select-size cursor-pointer w-4 py-1`}
+                      } border-[1px] rounded-full   mx-2 w-11 text-center select-size cursor-pointer  py-1`}
                     >
-                      <button>S</button>
+                      <button className="px-3 py-1 rounded-full text-center">S</button>
                     </li>
                     <li
                       onClick={() => {
@@ -192,9 +196,9 @@ const ItemPage = () => {
                         size === "M"
                           ? "text-green-500 hover:text-green-600 border-green-500"
                           : "hover:border-mostlyblack border-white"
-                      } border-b-[1px]   select-size cursor-pointer w-4 py-1`}
+                      } border-[1px] rounded-full   mx-2 w-11 text-center select-size cursor-pointer  py-1`}
                     >
-                      <button>M</button>
+                      <button className="px-3 py-1 rounded-full text-center">M</button>
                     </li>
                     <li
                       onClick={() => {
@@ -205,9 +209,9 @@ const ItemPage = () => {
                         size === "L"
                           ? "text-green-500 hover:text-green-600 border-green-500"
                           : "hover:border-mostlyblack border-white"
-                      } border-b-[1px]   select-size cursor-pointer w-4 py-1`}
+                      } border-[1px] rounded-full   mx-2 w-11 text-center select-size cursor-pointer  py-1`}
                     >
-                      <button>L</button>
+                      <button className="px-3 py-1 rounded-full text-center">L</button>
                     </li>
                     <li
                       onClick={() => {
@@ -218,9 +222,9 @@ const ItemPage = () => {
                         size === "XL"
                           ? "text-green-500 hover:text-green-600 border-green-500"
                           : "hover:border-mostlyblack border-white"
-                      } border-b-[1px]   select-size cursor-pointer w-4 py-1`}
+                      } border-[1px] rounded-full   mx-2 w-11 text-center select-size cursor-pointer  py-1`}
                     >
-                      <button>XL</button>
+                      <button className="px-3 py-1 rounded-full text-center">XL</button>
                     </li>
                   </ul>
                 </div>

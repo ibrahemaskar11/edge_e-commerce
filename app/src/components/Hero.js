@@ -10,7 +10,7 @@ const Hero = ({ refProp }) => {
       className="w-[full]  relative bg-gray-600/60 overflow-hidden "
     >
       <div className="absolute h-[100vh] w-full  ">
-        <img
+        <img loading="lazy"
           src={
             "https://res.cloudinary.com/dvywdmp9y/image/upload/v1665195021/hero_img_mob_z5zdvr.jpg"
           }

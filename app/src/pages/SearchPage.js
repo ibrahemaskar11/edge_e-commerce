@@ -10,6 +10,7 @@ const SearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchError, setSearchError] = useState(false);
   const [touched, setTouched] = useState(false);
+  const isLoading = useSelector(state=> state.items.isLoading)
   const items = useSelector((state) => state.items.items);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -60,6 +61,7 @@ const SearchPage = () => {
   return (
     <section id="men-page" className=" w-full h-[100vh] ">
       <Navbar changeColor={true} isShadow={false} />
+      {isLoading && loadingPanner}
       <div className="w-full min-h-[100vh] overflow-y-scroll flex flex-col  justify-center items-center ">
         <div
           className={`max-w-[960px] border-b-2 space-x-4 border-mostlyblack ${
@@ -85,7 +87,7 @@ const SearchPage = () => {
           />
         </div>
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto py-12 justify-center items-center xl:px-[10rem] text-center`}
+          className={`flex flex-wrap xl:px-[10rem] mx-auto py-12 justify-center items-center text-center xl:text-center`}
         >
           {touched &&
             !isNoSearchItems && !searchInputEmpty &&

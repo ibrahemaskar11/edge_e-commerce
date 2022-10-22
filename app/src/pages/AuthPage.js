@@ -40,12 +40,18 @@ const AuthPage = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setPassword("");
-      setConfirmPassword("");
       setTimeout(() => {
         setError("");
       }, 5000);
       setError("Passwords do not match");
+      return;
+    }
+    if(password.trim().length !== 8 || confirmPassword.trim().length !== 8){
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+      setError("Passwords length can not be less than 8 characters");
+      return;
     }
     try {
       const res = await fetch(
@@ -59,6 +65,7 @@ const AuthPage = () => {
           mode: "cors",
         }
       );
+      console.log(res);
       if (!res.ok) throw new Error("Invalid Credentials");
       const data = await res.json();
       const expirationTime = new Date(

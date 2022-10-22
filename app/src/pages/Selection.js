@@ -60,15 +60,10 @@ const Selection = () => {
         >
           <div className=" w-full h-[50vh] lg:h-full object-cover overflow-hidden">
             <img
+              loading="lazy"
               src={
                 "https://res.cloudinary.com/dvywdmp9y/image/upload/v1665195088/Women_Selection_1_qz16yd.jpg"
               }
-              placeholder={<LazyImagePlaceholder />}
-              delayTime={700}
-              delayMethod="debounce"
-              width="100%"
-              height="auto"
-              effect="blur"
             />
           </div>
           <div className="absolute selection-text flex justify-center items-center ">
@@ -130,15 +125,10 @@ const Selection = () => {
         >
           <div className=" w-full h-[50vh] lg:h-full object-cover overflow-hidden">
             <img
+              loading="lazy"
               src={
                 "https://res.cloudinary.com/dvywdmp9y/image/upload/v1665195035/Men_Selection__q8edrd.jpg"
               }
-              placeholder={<LazyImagePlaceholder />}
-              delayTime={700}
-              delayMethod="debounce"
-              width="100%"
-              height="auto"
-              effect="blur"
             />
           </div>
           <div className="absolute selection-text flex justify-center items-center ">

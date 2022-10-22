@@ -1,17 +1,19 @@
-require("dotenv").config({
-  path: "./config.env",
-});
+require("dotenv");
+// .config({
+//   path: "./config.env",
+// });
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const express = require("express");
 const connectDB = require("./config/db");
-const errorHandler = require("./middleWare/error");
+// const errorHandler = require("./middleWare/error");
 connectDB();
 
 const app = express();
 app.use(require("cors")());
 app.use(express.json());
 app.use(cookieParser());
+app.get("/", (req, res) => res.send("Hello, World!"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/items", require("./routes/items"));
@@ -32,7 +34,7 @@ const PORT = process.env.PORT || 5000;
 //   });
 // }
 
-app.use(errorHandler);
+// app.use(errorHandler);
 const server = app.listen(PORT, () => {
   console.log(`Server Running on Port ${PORT}`);
 });

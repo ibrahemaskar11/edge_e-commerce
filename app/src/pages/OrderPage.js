@@ -17,10 +17,12 @@ const OrderPage = () => {
   const [cityError, setCityError] = useState(false);
   const [postalCodeError, setPostalCodeError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [inputError, setInputError] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const dispatch = useDispatch();
@@ -61,66 +63,82 @@ const OrderPage = () => {
   }, []);
   const usernameChangeHandler = (e) => {
     setUsernameError(false);
+    setErrorMessage("");
+
     setUsername(e.target.value);
   };
   const emailChangeHandler = (e) => {
     setEmailError(false);
+    setErrorMessage("");
+
     setEmail(e.target.value);
   };
   const phoneNumberChangeHandler = (e) => {
     setPhoneNumberError(false);
+    setErrorMessage("");
+
     setPhoneNumber(e.target.value);
   };
   const addressChangeHandler = (e) => {
     setAddressError(false);
+    setErrorMessage("");
+
     setAddress(e.target.value);
   };
   const cityChangeHandler = (e) => {
     setCityError(false);
+    setErrorMessage("");
+
     setCity(e.target.value);
   };
   const postalCodeChangeHandler = (e) => {
     setPostalCodeError(false);
+    setErrorMessage("");
+
     setPostalCode(e.target.value);
   };
 
   const submitOrderHandler = async () => {
+    let redFlag = false
     try {
       if (username.trim().length === 0) {
         setUsernameError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (phoneNumber.trim().length === 0) {
         setPhoneNumberError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (phoneNumber.trim().length !== 11) {
         setPhoneNumberError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (email.trim().length === 0) {
         setEmailError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (!email.includes("@")) {
         setEmailError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (address.trim().length === 0) {
         setAddressError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (city.trim().length === 0) {
         setCityError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (postalCode.trim().length === 0) {
         setPostalCodeError(true);
-        throw new Error("invalid input");
+        redFlag = true
       }
       if (cartItems.length === 0) {
         setError(true);
-        throw new Error("invalid input");
+        redFlag = true
+      }
+      if(redFlag){
+        throw new error('invalid input')
       }
       setLoading(true);
       const ownerId = localStorage.getItem("userId");
@@ -157,6 +175,10 @@ const OrderPage = () => {
       dispatch(cartActions.emptyCart());
       setLoading(false);
     } catch (error) {
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
+      setErrorMessage(error);
       setLoading(false);
     }
   };
@@ -184,6 +206,11 @@ const OrderPage = () => {
           </h1>
           <div className="flex flex-col lg:flex-row px-8 space-x-4 mb-12 lg:max-h-[70vh]">
             <div className="grid grid-cols-1 w-full lg:w-[50%] mb-8 lg:mb-0 lg:pr-8 lg:border-r-[1px]">
+              {errorMessage && (
+                <h3 className="capitalize abel text-xl font-[600] mb-2 text-red-600">
+                  Invalid input
+                </h3>
+              )}
               <div className="col-span-1">
                 <label
                   htmlFor=""
