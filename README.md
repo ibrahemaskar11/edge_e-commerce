@@ -44,6 +44,8 @@ Edge is a MERN stack e-commerce website that manages data using Mongodb and Mong
 
 ## Getting started with the front-end
 
+### Install the front-end node modules using the command `npm install`
+
 ### Available Scripts
 
 In the project directory, you can run:
